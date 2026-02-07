@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    .container { max-width: 600px; margin: 20px auto; background: #fff; border-radius: 8px; overflow: hidden; }
+    .header { background: #1a365d; color: white; padding: 20px; }
+    .header h1 { margin: 0; font-size: 20px; }
+    .priority-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+    .priority-urgent { background: #e53e3e; color: white; }
+    .priority-high { background: #dd6b20; color: white; }
+    .priority-medium { background: #d69e2e; color: white; }
+    .priority-low { background: #38a169; color: white; }
+    .content { padding: 20px; }
+    .action-box { background: #fff5f5; border: 1px solid #feb2b2; border-radius: 6px; padding: 15px; margin: 15px 0; }
+    .action-box h3 { margin-top: 0; color: #e53e3e; }
+    .cta-button { display: inline-block; background: #2b6cb0; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; }
+    .footer { padding: 15px 20px; background: #f7fafc; font-size: 12px; color: #718096; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="priority-badge priority-{{ priority }}">{{ priority }}</span>
+      <h1>{{ headline }}</h1>
+    </div>
+    <div class="content">
+      <p>{{ summary }}</p>
+
+      {% if action_required %}
+      <div class="action-box">
+        <h3>Action Required{% if action_deadline %} by {{ action_deadline }}{% endif %}</h3>
+        <ul>
+        {% for action in recommended_actions %}
+          <li>{{ action }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if related_projects %}
+      <p><strong>Affected Projects:</strong> {{ related_projects | join(", ") }}</p>
+      {% endif %}
+
+      <p style="text-align: center; margin-top: 25px;">
+        <a href="{{ dashboard_url }}" class="cta-button">View Details in Dashboard</a>
+      </p>
+    </div>
+    <div class="footer">
+      <p>HousingSpeak Alert | {{ organization }} | {{ jurisdiction }}</p>
+      <p><a href="{{ unsubscribe_url }}">Manage notification preferences</a></p>
+    </div>
+  </div>
+</body>
+</html>

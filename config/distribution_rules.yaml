@@ -1,0 +1,76 @@
+# Distribution rules — control how content is routed to channels.
+
+content_routing:
+  Policy_Brief:
+    channels: ["email"]
+    requires_review: true
+    review_level: "editor"
+    default_format: "pdf"
+
+  Stakeholder_Report:
+    channels: ["email", "dashboard"]
+    requires_review: true
+    review_level: "editor"
+    default_format: "html"
+
+  Blog_Post:
+    channels: ["blog", "email", "social_media"]
+    requires_review: true
+    review_level: "editor"
+    default_format: "html"
+
+  Alert:
+    channels: ["email", "dashboard"]
+    requires_review: false
+    review_level: "auto"
+    default_format: "html"
+
+  Model_Ordinance:
+    channels: ["email"]
+    requires_review: true
+    review_level: "legal"
+    default_format: "pdf"
+
+  Testimony:
+    channels: ["email"]
+    requires_review: true
+    review_level: "legal"
+    default_format: "html"
+
+  Op_Ed:
+    channels: ["blog", "email"]
+    requires_review: true
+    review_level: "executive"
+    default_format: "html"
+
+  Social_Media:
+    channels: ["social_media"]
+    requires_review: true
+    review_level: "editor"
+    default_format: "text"
+
+scheduling:
+  weekly_digest:
+    day: "monday"
+    hour: 9
+    timezone: "US/Mountain"
+    content_types: ["Stakeholder_Report"]
+
+  daily_alert_scan:
+    hour: 7
+    timezone: "US/Mountain"
+
+  social_media:
+    # Optimal posting times by platform
+    twitter:
+      times: ["09:00", "12:00", "17:00"]
+    linkedin:
+      times: ["08:00", "12:00"]
+
+rate_limits:
+  email:
+    max_per_stakeholder_per_day: 3
+    max_per_stakeholder_per_week: 10
+  social_media:
+    max_posts_per_day: 5
+    min_interval_minutes: 120

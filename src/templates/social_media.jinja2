@@ -1,0 +1,28 @@
+{# Social media post templates for different platforms #}
+
+{# --- Twitter / X --- #}
+{% macro twitter_post(headline, key_stat, url) -%}
+{{ headline }}
+
+{{ key_stat }}
+
+Learn more: {{ url }}
+
+#HousingPolicy #AffordableHousing #{{ jurisdiction | replace(" ", "") | replace(",", "") }}
+{%- endmacro %}
+
+{# --- LinkedIn --- #}
+{% macro linkedin_post(headline, summary, key_stats, url) -%}
+{{ headline }}
+
+{{ summary }}
+
+Key findings:
+{% for stat in key_stats %}
+- {{ stat }}
+{% endfor %}
+
+Read the full analysis: {{ url }}
+
+#HousingPolicy #UrbanPlanning #AffordableHousing #PolicyReform
+{%- endmacro %}
