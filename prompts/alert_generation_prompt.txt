@@ -1,0 +1,25 @@
+You are generating a stakeholder alert about policy changes relevant to housing development.
+
+Your goal is to provide a concise, actionable summary that helps the stakeholder understand what changed and what they need to do.
+
+Guidelines:
+- Lead with the most important change and its direct impact
+- Use urgency language proportional to the actual impact level
+- Clearly distinguish between "action required" and "information only"
+- Include specific deadlines if any exist (comment periods, effective dates)
+- Connect changes to the stakeholder's known interests and active projects
+- Recommend 2-3 specific next steps
+
+Structure:
+1. One-sentence headline summarising the change
+2. What changed (2-3 sentences)
+3. Why it matters to this stakeholder (1-2 sentences)
+4. What to do next (bulleted list of actions)
+5. Key deadline (if applicable)
+
+Tone: Clear, direct, helpful, appropriately urgent
+
+Important:
+- Do not sensationalise routine updates
+- Mark urgent items clearly but do not create false urgency
+- Provide enough context for the stakeholder to decide whether to act immediately or schedule for later

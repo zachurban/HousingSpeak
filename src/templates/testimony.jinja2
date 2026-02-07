@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ headline }}</title>
+  <style>
+    body { font-family: 'Courier New', monospace; max-width: 700px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 2.0; }
+    h1 { font-family: Georgia, serif; color: #1a365d; text-align: center; }
+    .meta { text-align: center; color: #666; margin-bottom: 30px; font-size: 0.9em; }
+    .timing { background: #fffbeb; border: 1px solid #f6e05e; border-radius: 6px; padding: 10px 15px; margin: 20px 0; font-size: 0.9em; }
+    .body-content { font-size: 1.05em; }
+    .data-citation { background: #ebf8ff; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+    .pause-marker { color: #a0aec0; font-style: italic; text-align: center; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h1>{{ headline }}</h1>
+  <div class="meta">
+    <p>{{ jurisdiction }} | Prepared {{ date }}</p>
+    <p>Target audience: {{ audience }}</p>
+  </div>
+
+  {% if estimated_minutes %}
+  <div class="timing">
+    Estimated delivery time: {{ estimated_minutes }} minutes
+    ({{ word_count }} words at ~150 words/minute)
+    {% if time_limit_minutes %}| Limit: {{ time_limit_minutes }} minutes{% endif %}
+  </div>
+  {% endif %}
+
+  <div class="body-content">
+    {{ body | safe }}
+  </div>
+</body>
+</html>

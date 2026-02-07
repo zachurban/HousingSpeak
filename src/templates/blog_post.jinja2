@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ headline }}</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #2d3748; line-height: 1.7; }
+    h1 { font-size: 2em; color: #1a202c; margin-bottom: 10px; }
+    .meta { color: #718096; font-size: 0.9em; margin-bottom: 30px; }
+    .hook { font-size: 1.15em; color: #4a5568; border-left: 4px solid #4299e1; padding-left: 16px; margin: 25px 0; }
+    blockquote { background: #f7fafc; border-left: 4px solid #4299e1; margin: 20px 0; padding: 15px 20px; font-style: italic; }
+    .cta { background: #ebf8ff; border: 2px solid #4299e1; border-radius: 8px; padding: 20px; margin: 30px 0; text-align: center; }
+    .cta a { color: #2b6cb0; font-weight: bold; text-decoration: none; font-size: 1.1em; }
+    .tags { margin-top: 30px; }
+    .tag { display: inline-block; background: #edf2f7; color: #4a5568; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; margin: 2px; }
+  </style>
+</head>
+<body>
+  <h1>{{ headline }}</h1>
+  <div class="meta">{{ jurisdiction }} | {{ date }} | By HousingSpeak Research Team</div>
+
+  <div class="body-content">
+    {{ body | safe }}
+  </div>
+
+  {% if call_to_action %}
+  <div class="cta">
+    <p>{{ call_to_action }}</p>
+  </div>
+  {% endif %}
+
+  {% if seo_keywords %}
+  <div class="tags">
+    {% for keyword in seo_keywords %}
+    <span class="tag">{{ keyword }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</body>
+</html>

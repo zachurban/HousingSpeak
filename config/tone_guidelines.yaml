@@ -1,0 +1,56 @@
+# Tone guidelines for audience and channel adaptation.
+# Keys under 'audiences' and 'channels' are simple find-replace pairs
+# applied by the tone_adaptation utility.
+
+audiences:
+  City_Council:
+    "you should": "the Council may wish to"
+    "we recommend": "staff recommends"
+    "the data shows": "the analysis indicates"
+    "this is a problem": "this represents a significant challenge"
+    "fix": "address"
+
+  State_Legislature:
+    "you should": "the Legislature may consider"
+    "we recommend": "the data supports"
+    "the city": "the jurisdiction"
+    "fix": "reform"
+
+  General_Public:
+    "regulatory friction": "red tape"
+    "entitlement process": "permit process"
+    "friction score": "difficulty rating"
+    "variance": "exception"
+    "inclusionary zoning": "affordable housing requirements"
+    "impact fees": "development fees"
+
+  Developers:
+    "we recommend": "based on the data, consider"
+    "the city should": "jurisdictions that have addressed this"
+
+  HUD_Officials:
+    "we recommend": "the data supports the recommendation to"
+    "the problem": "the identified barrier"
+
+channels:
+  email:
+    # Keep email copy concise
+    "In conclusion, ": ""
+    "To summarize, ": ""
+
+  social_media:
+    "In addition, ": ""
+    "Furthermore, ": ""
+    "However, it should be noted that ": ""
+
+  blog:
+    # No special adaptations for blog — use audience defaults
+    {}
+
+general_principles:
+  - "Always lead with the most impactful finding"
+  - "Use active voice exclusively"
+  - "Quantify impacts in dollar terms and time whenever possible"
+  - "Avoid passive constructions like 'it was found that'"
+  - "Replace abstract nouns with concrete verbs"
+  - "Cite the source jurisdiction for every comparison"

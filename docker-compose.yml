@@ -1,0 +1,76 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://housingspeak:housingspeak@db:5432/housingspeak
+      - REDIS_URL=redis://redis:6379/0
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - HOUSING_LENS_API_URL=${HOUSING_LENS_API_URL:-http://localhost:8001}
+      - HOUSING_EAR_API_URL=${HOUSING_EAR_API_URL:-http://localhost:8002}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./prompts:/app/prompts
+      - ./config:/app/config
+      - ./templates:/app/templates
+
+  worker:
+    build: .
+    command: celery -A src.distribution.scheduler worker --loglevel=info
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://housingspeak:housingspeak@db:5432/housingspeak
+      - REDIS_URL=redis://redis:6379/0
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  beat:
+    build: .
+    command: celery -A src.distribution.scheduler beat --loglevel=info
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=housingspeak
+      - POSTGRES_PASSWORD=housingspeak
+      - POSTGRES_DB=housingspeak
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U housingspeak"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

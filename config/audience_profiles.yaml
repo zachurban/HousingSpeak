@@ -1,0 +1,131 @@
+# Audience profile definitions for content generation and tone adaptation.
+
+audiences:
+  PHA_Board:
+    display_name: "Public Housing Authority Board"
+    description: "Executive directors and board members of local PHAs"
+    tone: "professional_advisory"
+    reading_level_target: 12  # Grade level
+    preferred_content_types:
+      - Policy_Brief
+      - Stakeholder_Report
+      - Alert
+    key_concerns:
+      - Capital Fund allocation
+      - VAWA compliance
+      - Voucher administration
+      - HUD audit readiness
+    language_preferences:
+      formality: "high"
+      jargon_level: "industry_standard"
+      data_density: "high"
+
+  City_Council:
+    display_name: "City Council Members"
+    description: "Elected officials and their staff"
+    tone: "professional_persuasive"
+    reading_level_target: 10
+    preferred_content_types:
+      - Policy_Brief
+      - Model_Ordinance
+      - Testimony
+    key_concerns:
+      - Constituent housing affordability
+      - Development timelines
+      - Tax revenue impact
+      - Comparable city performance
+    language_preferences:
+      formality: "high"
+      jargon_level: "minimal"
+      data_density: "moderate"
+
+  State_Legislature:
+    display_name: "State Legislators"
+    description: "State representatives and housing committee members"
+    tone: "formal_analytical"
+    reading_level_target: 12
+    preferred_content_types:
+      - Policy_Brief
+      - Testimony
+    key_concerns:
+      - Statewide housing production
+      - Preemption issues
+      - Budget impact
+      - Inter-jurisdictional coordination
+    language_preferences:
+      formality: "very_high"
+      jargon_level: "moderate"
+      data_density: "high"
+
+  Developers:
+    display_name: "Housing Developers"
+    description: "Affordable and market-rate housing developers"
+    tone: "direct_actionable"
+    reading_level_target: 10
+    preferred_content_types:
+      - Stakeholder_Report
+      - Alert
+    key_concerns:
+      - Entitlement timelines
+      - Fee structures
+      - Zoning requirements
+      - Cost predictability
+    language_preferences:
+      formality: "moderate"
+      jargon_level: "industry_standard"
+      data_density: "high"
+
+  General_Public:
+    display_name: "General Public"
+    description: "Residents, community members, and advocacy supporters"
+    tone: "accessible_engaging"
+    reading_level_target: 8
+    preferred_content_types:
+      - Blog_Post
+      - Social_Media
+      - Infographic
+    key_concerns:
+      - Rent levels
+      - Neighborhood development
+      - Community input opportunities
+      - Equity and access
+    language_preferences:
+      formality: "low"
+      jargon_level: "none"
+      data_density: "low"
+
+  HUD_Officials:
+    display_name: "HUD Regional Office Staff"
+    description: "Federal housing officials and program managers"
+    tone: "formal_technical"
+    reading_level_target: 14
+    preferred_content_types:
+      - Policy_Brief
+      - Stakeholder_Report
+    key_concerns:
+      - Program compliance
+      - Performance metrics
+      - Federal policy alignment
+      - Regional coordination
+    language_preferences:
+      formality: "very_high"
+      jargon_level: "high"
+      data_density: "very_high"
+
+  Media:
+    display_name: "Journalists and Media"
+    description: "Local and national reporters covering housing"
+    tone: "factual_newsworthy"
+    reading_level_target: 9
+    preferred_content_types:
+      - Blog_Post
+      - Op_Ed
+    key_concerns:
+      - Newsworthy data points
+      - Human interest angles
+      - Trend stories
+      - Comparative rankings
+    language_preferences:
+      formality: "moderate"
+      jargon_level: "minimal"
+      data_density: "moderate"
